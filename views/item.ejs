@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Furniswap</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="/assets/allJS.js"></script>
+</head>
+<body>
+  <% include partials/header.ejs %>
+  <% include partials/user-navigation.ejs %>
+  <div id="container">
+    <% include partials/site-navigation.ejs %>
+    <main id="main">
+      <div id="divBreadcrumb">
+        <ul class="breadcrumb">
+          <li class="li-home"><a href="/home">Home</a></li>
+          <li class="li-Categories"><a href="/categories">Categories</a></li>
+          <li>Item</li>
+        </ul>
+      </div>
+      
+      <section id="itemDetailsSection">    
+        <div class="div-detail">
+          <%  if(isAvailable === 0 && currentProfile){ %>
+          <h4 id="itemErrMsg">Sorry, you do not have any available items for swapping. Please add more items to start swapping again!</h4>
+          <% } %>
+          <div class="div-img"> <img src= http://localhost:8080/<%= theItem.imageUrl %> alt="item"></div>
+          
+          <h3><%= theItem.itemName %></h3>         
+          <% if(typeof(currentProfile) === "undefined") {%>  
+
+          <div class="div-swappedLogo">
+            <h4 class="h4-swappedLogo">Login to start swapping</h4>
+          </div>
+          <a class="btn" href="/item?theItem=<%= theItem.itemCode %>">
+            <i class="fa fa-refresh"></i>&nbsp;Swap it
+          </a>
+          <br>
+          <a class="btn" href="">
+           <i class="fa fa-star"></i>&nbsp;Rate it
+         </a>            
+
+         <% }else{%>
+
+         <% if(theItem.itemStatus === 'pending'){ %>     
+         <div class="div-swappedLogo"> 
+          <div id="imgLogo"></div> 
+          <h4 class="h4-swappedLogo">Offer Pending!</h4>
+          <br><br>
+          <a id="btnRateit" class="btn" href="">
+            <i class="fa fa-star"></i>&nbsp;Rate it
+          </a>
+          <form id="rateItem" action="#" method="POST">
+            <div id="stars" class="stars" data-rating="<%= itemRating %>">
+              <span class="star"></span>
+              <span class="star"></span>
+              <span class="star"></span>
+              <span class="star"></span>
+              <span class="star"></span>
+            </div>
+            <input id="ratingHidden" type="hidden" name="ratingValue" value="<%= itemRating %>">
+            <input id="btnSubmitRating" class="btn-confirmSwap" type="submit" value="Save">
+          </form>
+        </div>
+        <%} else if(theItem.itemStatus === 'swapped'){ %> 
+        <div class="div-swappedLogo"> 
+          <div id="imgLogo"></div> 
+          <h4 class="h4-swappedLogo">Item Swapped!</h4>
+          <br><br>
+          <a id="btnRateit" class="btn" href="">
+            <i class="fa fa-star"></i>&nbsp;Rate it
+          </a>
+          <form id="rateItem" action="#" method="POST">
+            <div id="stars" class="stars" data-rating="<%= itemRating %>">
+              <span class="star"></span>
+              <span class="star"></span>
+              <span class="star"></span>
+              <span class="star"></span>
+              <span class="star"></span>
+            </div>
+            <input id="ratingHidden" type="hidden" name="ratingValue" value="<%= itemRating %>">
+            <input id="btnSubmitRating" class="btn-confirmSwap" type="submit" value="Save">
+          </form>
+        </div>
+        <%} else if(theItem.itemStatus === 'available' && currentProfile.userID === theItem.userID){ %> 
+        <div class="div-swappedLogo"> 
+         <br>
+         <a id="btnRateit" class="btn" href="">
+          <i class="fa fa-star"></i>&nbsp;Rate it
+        </a>
+        <form id="rateItem" action="#" method="POST">
+          <div id="stars" class="stars" data-rating="<%= itemRating %>">
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+          </div>
+          <input id="ratingHidden" type="hidden" name="ratingValue" value="<%= itemRating %>">
+          <input id="btnSubmitRating" class="btn-confirmSwap" type="submit" value="Save">
+        </form>
+
+      </div>
+      <%  }else{   %>
+      <a class="btn" href="/swap?theItem=<%= theItem.itemCode %>">
+        <i class="fa fa-refresh"></i>&nbsp;Swap it
+      </a>
+      <br>
+      <a id="btnRateit" class="btn" href="">
+        <i class="fa fa-star"></i>&nbsp;Rate it
+      </a>
+      <h4 id="rateItem" class="h4-swappedLogo">You Cannot rate this item!</h4>
+      <% } } %>       
+      <p><%= theItem.description %></p>
+      <a class="btn" href="/categories"><i class="fa fa-arrow-left"></i>&nbsp;Back</a>
+    </div>
+
+  </section>
+</main>    
+<br>
+<% include partials/footer.ejs %> 
+</div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+ <header>
+    <div id="imgLogo"></div>
+     <% if(isAuthenticated === "1" && typeof(currentProfile) !== "undefined") {%>
+    <div id="loginName">Welcome <%= currentProfile.firstName %>!</div>
+    <% } else {%>
+     <div id="loginName">Not Signed In</div>
+     <% } %>
+    <h1>Furniswap</h1>
+    <h6>Yes! We swap furniture</h6>   
+ </header>

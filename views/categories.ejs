@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Furniswap</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <% include partials/header.ejs %>
+  <% include partials/user-navigation.ejs %>
+  <div id="container">
+    <% include partials/site-navigation.ejs %>
+    <main id="main">
+      <div id="divBreadcrumb">
+        <ul class="breadcrumb">
+          <li class="li-home"><a href="/home">Home</a></li>
+          <li class="li-Categories">Categories</li>
+        </ul>
+      </div>
+
+      <section id="CategoriesSection">   
+       
+        <% for(var i=0; i< data.categories.length; i++) {%> 
+        <div class="div-categories clearBoth"><img src="http://localhost:8080/assets/images/icon_<%= data.categories[i]%>.png" alt="Category Icon"><h4><%= data.categories[i]%></h4>
+          <br>
+          <ul>
+           <%  if(currentProfile)
+           {
+             for(var j=0; j< data.items.length; j++) {
+             if(data.items[j].catalogCategory === data.categories[i] && data.items[j].itemStatus === 'available'){ %>
+             <li><a href="/item?theItem=<%= data.items[j].itemCode%>"><%= data.items[j].itemName %></a></li>
+             <% }
+           }
+         }
+         else
+         {
+           for(var j=0; j< data.items.length; j++) {
+           if(data.items[j].catalogCategory === data.categories[i]) {%>
+           <li><a href="/item?theItem=<%= data.items[j].itemCode%>"><%= data.items[j].itemName %></a></li>
+           <%  }
+         }
+       }%>
+     </ul>
+   </div>
+   <% } %>
+ </section>  
+ 
+</main>    
+<br><br>
+<% include partials/footer.ejs %> 
+</div>
+</body>
+</html>

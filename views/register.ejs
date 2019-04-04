@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Furniswap</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <% include partials/header.ejs %>
+  <% include partials/user-navigation.ejs %>
+  <div id="container">
+    <% include partials/site-navigation.ejs %>
+
+    <main id="main">    
+     
+     <section id="RegisterSection"> 
+      <h2>Register</h2>
+      <div class="div-Register">
+        <% if(typeof(errors) !== 'undefined') {  %>
+        <%  for(var i=0;i< errors.length; i++){  %>
+        <h4 class="errMsg"><%= errors[i].msg %></h4>
+        <%   } } %>
+        <form id="tableForm" action="/register" method="post">
+          <table>
+            <tr>
+              <td class="td-span"><span>Full Name<span class="redStar">*</span></span></td>
+              <td> 
+                <input type="text" name="firstName" placeholder="Enter your First Name">
+                <input type="text" name="lastName" placeholder="Enter your Last Name">
+              </td>
+            </tr>
+
+            <tr>
+              <td class="td-span"><span>Address<span class="redStar">*</span></span></td>
+              <td>  
+                <input type="text" name="address1" placeholder="Address line 1">
+                <input type="text" name="address2" placeholder="Address line 2">
+              </td>
+            </tr>
+
+            <tr>
+              <td></td>
+              <td> 
+               <input type="text" name="city" placeholder= City>
+               <input type="text" name="state" placeholder="State/Province">
+             </td>
+           </tr>
+
+           <tr>
+            <td></td>
+            <td>  
+              <input type="text" name="postCode" placeholder="postCode">
+              <input type="text" name="country" placeholder="Country">
+            </td>
+          </tr>
+
+          <tr>
+            <td class="td-span"><span>Email<span class="redStar">*</span></span></td>
+            <td>
+             <input type="text" name="email" placeholder="Enter your Email Address">
+           </td>
+         </tr>
+
+         <tr>
+          <td class="td-span"><span>Password<span class="redStar">*</span></span></td>
+          <td>
+           <input type="password" name="password" placeholder="Enter your Password">
+         </td>
+       </tr>
+
+       <tr>
+        <td class="td-span"><span>Confirm Password<span class="redStar">*</span></span></td>
+        <td>
+         <input type="password" name="confirmPassword" placeholder="Re-enter your Password">
+       </td>
+     </tr>
+   </table>
+   <div class="div-BtnSignin">
+    <input class="btn-register" value="Register" type="submit"/>
+  </div>
+
+</form>      
+</div>
+</section>
+</main>
+<br><br>
+<% include partials/footer.ejs %> 
+</div>
+</body>
+</html>

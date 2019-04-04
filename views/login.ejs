@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Furniswap</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <% include partials/header.ejs %>
+  <% include partials/user-navigation.ejs %>
+  <div id="container">
+    <% include partials/site-navigation.ejs %>
+
+    <main id="main">    
+     <h2>Sign In</h2>
+     <section id="LoginSection">  
+       <div class="div-SignIn">
+        <% if(message != "")%>
+        <h4 class="errMsg"><%= message %></h4>
+        <form id="tableForm" action="/login?action=signin" method="post">
+
+          <div class="div-Email">
+            <span>Email</span>
+            <input type="text" name="useremail" placeholder="Enter your Email Address">
+          </div>
+          <div class="div-Pwd"> 
+            <span>Password</span>
+            <input type="password" name="password" placeholder="Enter your Password">
+          </div>
+          <div class="div-BtnSignin">
+            <input class="btn-signIn" value="Sign In" type="submit"/>
+          </div>
+          <span>Don't have an account? <a href="/register">Register</a></span>
+        </form>      
+      </div>
+    </section>
+  </main>
+
+  <br><br>
+  <% include partials/footer.ejs %> 
+</div>
+</body>
+</html>

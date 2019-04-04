@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Furniswap</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.min.css">
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/assets/allJS.js"></script>
+</head>
+<body>
+  <% include partials/header.ejs %>
+
+  <% include partials/user-navigation.ejs %>
+  <div id="container">
+    <% include partials/site-navigation.ejs %>
+    <main id="main">
+     <div id="divBreadcrumb">
+      <ul class="breadcrumb">
+        <li class="li-home"><a href="/home">Home</a></li>
+        <li>My Items</li>
+      </ul>
+    </div>
+
+    <section id="myItemsSection">
+      <h3><%= currentProfile.firstName %>'s Furniture for swap</h3>
+      <% if(cantDelete === 1) {%>
+      <h4 id="itemErrMsg">Pending Offer! Please withdraw swap before deleting...</h4>
+      <% } %>
+
+      <a class="btn btn-newItem" href="/newItem">Upload new item</a>
+      <table>
+        <tr>
+          <th>Item</th>
+          <th>Category</th>
+          <th>My Rating</th>
+          <th>Swap Status</th>
+          <th></th>
+          <th></th>
+        </tr>
+
+        <%  for(var i=0; i< userItems.length; i++) {%>
+        <tr>
+          <td><a class="a-title" href="/item?theItem=<%= userItems[i].itemCode %>"><%= userItems[i].itemName %> </a></td>
+          <td><%= userItems[i].catalogCategory %></td>
+          <td>
+            <div class="div-rating">
+             <%  for(var j=0; j < itemRating[i]; j++) {%>
+             <span class="fa fa-star checked"></span>
+             <% } %>  
+             <%  for(var j=0; j < 5-(itemRating[i]); j++) {%>
+             <span class="fa fa-star unchecked"></span>
+             <% } %> 
+           </div>                     
+         </td>
+
+         <% if(userItems[i].itemStatus === 'available') { %> 
+         <td class="align-center"> </td>
+         <% } else if (userItems[i].itemStatus === 'swapped') { %>  
+         <td class="align-center"> <span class="fa fa-check span-swap"></span></td>
+         <% } else if (userItems[i].itemStatus === 'pending') { %>  
+         <td class="align-center"> <span class="fa fa-refresh span-swap"></span></td>
+         <% } %>  
+
+         <% if(userItems[i].itemStatus === 'pending') { %> 
+         <td><a class="btn" href="/mySwaps?theItem=<%= userItems[i].itemCode %>">Update</a></td>                  
+         <% } else if(userItems[i].itemStatus === 'available'){ %>
+         <td><a class="btn" href="/categories">Update</a></td>
+         <% } else { %>
+         <td><a class="btn" href="/item?theItem=<%= userItems[i].itemCode %>">Update</a></td>
+         <% } %>
+         <td><a class="btn" href="/myItems?theItem=<%= userItems[i].itemCode %>&action=delete">Delete</a></td>                  
+       </tr>
+       <% } %> 
+     </table>
+     <br/><br/><br/><br/>
+     <p class="p-legend">Legend:
+      <span class="span-swap fa fa-refresh "></span>
+      Swap offer available(Pending)
+      <span class="span-swap fa fa-check "></span>
+      Already swapped
+    </p>
+  </section>
+</main>
+<br>
+<% include partials/footer.ejs %>
+</div>
+
+</body>
+</html>

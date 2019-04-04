@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Furniswap</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+   <% include partials/header.ejs %>
+   <% include partials/user-navigation.ejs %>
+   <div id="container">
+    <% include partials/site-navigation.ejs %>
+    <main id="main"> 	 
+       <h2>Contact Us!</h2>
+       <div class="div-contactUs">
+          <form>
+            <span class="span-sayhello">Say Hello!</span>
+
+            <div class="div-yourName"> 
+               <span>Your Name</span>
+               <input type="text" name="name" placeholder="Enter your name">
+           </div>
+
+           <div class="div-yourEmail">
+               <span>Email Address</span>
+               <input type="text" name="email" placeholder="Enter your email addess">
+           </div>
+
+           <div class="div-phone">
+               <span>Phone Number</span>
+               <input type="text" name="phone" placeholder="Enter your Phone Number">
+           </div>
+
+           <div class="div-subject">
+               <span >Subject</span>
+               
+               <select name="subject">
+                 <option>- Select -</option>
+                 <option>Sign-In Trouble</option>
+                 <option>Billing</option>
+                 <option>Suggestion</option>
+                 <option>Website Correction</option>
+                 <option>Public Relation</option>
+                 <option>Other</option>
+             </select>					
+         </div>
+         
+         <div class="div-mssg">
+           <span>Message</span>
+           <textarea name="message" placeholder="Your message here..."></textarea>
+       </div>
+       <div class="div-submit"><a class="btn" href="#">Submit</a></div>
+   </form>
+   
+</div>
+</main>
+<br><br>
+<% include partials/footer.ejs %> 
+</div>
+</body>
+</html>
