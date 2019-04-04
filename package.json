@@ -1,0 +1,28 @@
+{
+  "name": "hw2",
+  "version": "1.0.0",
+  "description": "content swapping website",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "content",
+    "swapping",
+    "furniture"
+  ],
+  "author": "me",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "express-validator": "^5.3.0",
+    "htmlencode": "0.0.4",
+    "mongoose": "^5.3.10",
+    "req-flash": "0.0.3"
+  }
+}

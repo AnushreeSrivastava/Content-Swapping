@@ -1,0 +1,102 @@
+//DROP if pre existing
+use furniswap
+db.dropDatabase()
+
+//CREATE DATABASE
+
+use furniswap
+
+// CREATE COLLECTIONS
+
+db.createCollection("items");
+db.createCollection("users");
+db.createCollection("offers");
+db.createCollection("itemfeedbacks");
+db.createCollection("offerfeedbacks");
+
+// INSERT RECORDS IN ITEM COLLECTION
+
+// 1 
+db.items.insert({'itemCode':'S11','userID':'1001','itemName':'Red Upholstered Sofa','catalogCategory':'sofa','itemStatus':'pending','description':'Its hard not to adore little red couch. Whether they’re tacked on to a seating group or used as a primary piece in small-scale living rooms, they add a new look to your layout without stealing valuable floor space. Founded atop a manufactured wood frame, it showcases clean lines and an armless design for a contemporary look. Upholstered in 100% polyester fabric, it features a row of buttons along the center of the back for added interest.','imageUrl':'assets/images/Red_sofa.png'});
+
+// 2
+db.items.insert({'itemCode':'S12','userID':'1001','itemName':'Black Leather Couch','catalogCategory':'sofa','itemStatus':'pending','description':'Real leather modern living room sofa with wooden legs. Upholstered in hand-picked soft top grain real leather with tufted details on the seat. Ultra comfortable and inviting, the perfect couch for a modern home. Light stained wooden legs with overstuffed cushions to provide ultimate comfort.','imageUrl':'assets/images/Black_leather.png'});
+
+//3
+db.items.insert({'itemCode':'S13','userID':'1001','itemName':'Beige loveseat','catalogCategory':'sofa','itemStatus':'pending','description':'When it comes to comfort and easy, breezy style, the loveseat puts you on cloud nine. Stuffed with high-quality feather fill, the loveseat’s reversible back and seat cushions feel every bit as sumptuous as they look.An effortlessly chic choice that’s sure to blend beautifully with everything, this loveseat in mineral beige is neutral with a new attitude. Pair of marvelously muted accent pillows are pure sophistication.','imageUrl':'assets/images/Beige_loveseat.png'});
+
+//4
+db.items.insert({'itemCode':'T11','userID':'1002','itemName':'Vintage Round Table','catalogCategory':'table','itemStatus':'pending','description':'Second only to the sofa, coffee tables are living room icons. They’re ubiquitous in all interior designs and come in a seemingly endless amount of styles. Built from reclaimed wood, it sports a planked top and an angular base – all brown washed for that perfectly imperfect look. Plus, its round design, measuring 37" in diameter, cuts corners to make the most of your square footage','imageUrl':'assets/images/RoundTable.png'});
+
+//5
+db.items.insert({'itemCode':'T12','userID':'1002','itemName':'Office Table','catalogCategory':'table','itemStatus':'pending','description':'A stately anchor for your study, this executive desk is ideal from working from home or just surfing the net. Made from manufactured wood, its frame measures 30.75" H x 66.25" W x 29.5" D. A pair of locking drawers are perfect for keeping important papers safely filed away, while additional drawers let you keep pens and sticky notes in place. Beyond functional, it showcases a warm cherry finish and complementary gold-finished bail pulls for a touch of classic character','imageUrl':'assets/images/OfficeTable.png'});
+
+//6
+db.items.insert({'itemCode':'T13','userID':'1002','itemName':'Console Table','catalogCategory':'table','itemStatus':'available','description':'A clean-lined design gets a dash of industrial influence with this console table. Spanning 54" wide, its manufactured wood and ash veneer top is founded upon a metal frame that supports up to 40 lbs. of any decorative display. The burnt oak finish up above rounds out the look with a touch of well-worn charm.','imageUrl':'assets/images/ConsoleTable.png'});
+
+//7
+db.items.insert({'itemCode':'C11','userID':'1003','itemName':'Office Chair','catalogCategory':'chair','itemStatus':'pending','description':'Whether you are bringing a bit of classic, stately style to your well-appointed workspace or adding a dash of versatile appeal to the craft corner, this executive chair is an essential addition to your updated abode. Featuring a plastic frame with a spinning, five-point castered base, this executive chair lets you move around the room and adjust as you jump into different projects, while the padded faux leather upholstery offers an unfussy and budget-friendly alternative to genuine leather furniture. Pull this executive chair up to a wrap-around, glass-top desk to craft an office space worthy of a downtown high rise, then add in a complementing faux leather loveseat on the other side of the room to unwind during much-needed breaks','imageUrl':'assets/images/OfficeChair.png'});
+
+//8
+db.items.insert({'itemCode':'C12','userID':'1003','itemName':'Garden Chair','catalogCategory':'chair','itemStatus':'pending','description':'The surface features a fine pattern of crisscrossed lines incised into the seat and back for a look that is at once delicate and bold. With a selection of colors that range from earthy to vivid, the Thalya Chair is perfectly at home in the dining room, living room or on the patio. A contemporary remake of a classic chair, Thalya combines simplicity and strong graphic design. This transparent polycarbonate chair has sinuous, elegant, soft and almost feminine lines. Made using gas-injection technology, Thalya has rounded edges, hollow legs and a unique reticular pattern along the seat and backrest','imageUrl':'assets/images/GardenChair.png'});
+
+//9
+db.items.insert({'itemCode':'C13','userID':'1003','itemName':'Dining Chair','catalogCategory':'chair','itemStatus':'available','description':'A streamlined silhouette gets a tasteful touch of texture with this modern dining chair. Crafted from metal, its open, sled-style base sports a sleek gold finish for a hint of glamour. Foam padding and solid-hued velvet upholstery envelop this piece for an approachable and inviting look. Once this distinctive design is assembled, it has the capacity to support up to 250 lbs. This chair arrives in a set of two.','imageUrl':'assets/images/DiningChair.png'});
+
+//10
+db.items.insert({'itemCode':'B11','userID':'1004','itemName':'Storage King Bed','catalogCategory':'bed','itemStatus':'available','description':'This Parton Storage Platform Bed will complete the look of your room and add personality to it. Offered in a rich finish, it is characterized by its simple assembly steps and sleek modern contemporary style. 2 Horizontal panels give the headboard a modern plank effect. Features a unique metal and hardwood slat construction allowing for easy assembly, sturdy construction and easier handling.','imageUrl':'assets/images/KingBed.png'});
+
+
+//11
+db.items.insert({'itemCode':'B12','userID':'1004','itemName':'Belcourt Queen Bed','catalogCategory':'bed','itemStatus':'pending','description':'The sleek Belcourt panel bed will be welcomed by those who appreciate clean lines and a contemporary approach to style. Picture frame molding on the head and footboard offer just enough visual interest while maintaining an appealing sense of simplicity. The bed is made using wood solids and birch veneers and completed with a classic black finish.','imageUrl':'assets/images/QueenBed.png'});
+
+
+//12
+db.items.insert({'itemCode':'B13','userID':'1004','itemName':'Oak Twin Bed','catalogCategory':'bed','itemStatus':'available','description':'With hand-applied finishes that show the natural grain of the wood and hardwood frames, this childrens furniture collection is as timelessly styled as it is expertly crafted. Expertly crafted of solid oak wood, poplar, oak veneers, plywood and MDFmedium density fiberboard, an engineered wood that lends exceptional strength and ensures that the bed will endure over time','imageUrl':'assets/images/TwinBed.png'});
+
+
+
+// INSERT RECORDS IN USER COLLECTION
+db.users.insert({"_id":ObjectId("5bfb04db052dca1e6044772d"),"City":"Miami","State":"FL","postCode":"32819","Country":"United States","userID":"1001","email":"m.debra@gmail.com","password":"$2a$10$aVq3YFDd4uy7kwNIH1p2..b4EhJi1VAlcko6YD7HMjJX6aEotgUse","firstName":"Debra","lastName":"Morgan","address1":"1234 Open Hill dr","address2":""});
+
+db.users.insert({"_id" : ObjectId("5bfb65460143a208ecbae473"),"City" : "Miami","State" : "FL","postCode" : "32810","Country" : "United States","userID" : "1002","email" : "m.dexter@gmail.com","password" : "$2a$10$ayxjlXwKVaobYtl.nzJ1fO3z3B80VrRdhDc6ddz753WDXAUMsiqe2","firstName" : "Dexter","lastName" : "Morgan","address1" : "1234 Ocean Hill dr","address2" : ""});
+
+db.users.insert({"_id" : ObjectId("5bfb65990143a208ecbae474"),"City" : "Miami","State" : "FL","postCode" : "32819","Country" : "United States","userID" : "1003","email" : "b.angel@gmail.com","password" : "$2a$10$vwifS.PilO94KFkftMiNTuXDuFyey7vk5hjNRa01JUC56u37s2GZq","firstName" : "Angel","lastName" : "Batista","address1" : "3334 Morning Ave","address2" : "unit 2443"});
+
+
+// INSERT IN OFFER COLLECTION
+
+//1
+db.offers.insert({'userID':'1001','itemCodeOwn':'S12','itemCodeWant':'C11'});
+
+//2
+db.offers.insert({'userID':'1001','itemCodeOwn':'S11','itemCodeWant':'T11'});
+
+//3
+db.offers.insert({'userID':'1002','itemCodeOwn':'T12','itemCodeWant':'S13'});
+
+//4
+db.offers.insert({'userID':'1004','itemCodeOwn':'B12','itemCodeWant':'C12'});
+
+
+
+//INSERT IN ITEMFEEDBACKS COLLECTION
+
+
+db.itemfeedbacks.insert({'itemCode':'S11','userID':'U123','rating':'5'});
+db.itemfeedbacks.insert({'itemCode':'S12','userID':'U123','rating':'3'});
+db.itemfeedbacks.insert({'itemCode':'S13','userID':'U123','rating':'4'});
+
+db.itemfeedbacks.insert({'itemCode':'T11','userID':'U124','rating':'5'});
+db.itemfeedbacks.insert({'itemCode':'T12','userID':'U124','rating':'2'});
+db.itemfeedbacks.insert({'itemCode':'T13','userID':'U124','rating':'3'});
+
+db.itemfeedbacks.insert({'itemCode':'C11','userID':'U125','rating':'5'});
+db.itemfeedbacks.insert({'itemCode':'C12','userID':'U125','rating':'1'});
+db.itemfeedbacks.insert({'itemCode':'C13','userID':'U125','rating':'2'});
+
+db.itemfeedbacks.insert({'itemCode':'B11','userID':'U126','rating':'5'});
+db.itemfeedbacks.insert({'itemCode':'B12','userID':'U126','rating':'3'});
+db.itemfeedbacks.insert({'itemCode':'B13','userID':'U126','rating':'1'});
+
+//INSERT IN OFFERFEEDBACKS COLLECTION
